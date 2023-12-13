@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> PROXY SERVER</h1>
+    <input type="text" id="input"></input>
+    <button onclick="makeRequest()" > MAKE REQUEST</button>
+    <h1> RESULT </h1>
+    <div id="result"></div>
+    <h1>request time</h1>
+    <div id="time"></div>
+    <script>
+        async function makeRequest(){
+            let startTime,endTime;
+            startTime = new Date().getTime();
+            const input = document.querySelector('input').value;
+            var data;
+            for(i=0;i<100;i++){
+                const response = await fetch('http://localhost:8000/'+input);
+            if(response.status !== 200){
+                console.log("error");
+                break;
+            }
+           /*  if(i==99){
+                data = response.data;
+            } */
+           
+            }
+            
+            endTime = new Date().getTime();
+            console.log(data);
+          //  document.getElementById('result').innerHTML = "result returned";
+            document.getElementById('time').innerHTML = endTime - startTime + "ms";
+        }
+    </script>   
+</body>
+</html>
